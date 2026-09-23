@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 60% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 55% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 205 90% 55%;
+    --primary-foreground: 222 60% 6%;
+    --secondary: 222 40% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 30% 16%;
+    --muted-foreground: 215 25% 68%;
+    --accent: 190 95% 55%;
+    --accent-foreground: 222 60% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 40% 20%;
+    --input: 217 40% 18%;
+    --ring: 190 95% 55%;
+    --chart-1: 205 90% 55%;
+    --chart-2: 190 95% 55%;
+    --chart-3: 152 60% 50%;
+    --chart-4: 350 85% 66%;
+    --chart-5: 258 78% 68%;
+    --radius: 0.9rem;
+  }
+  .dark {
+    --background: 222 60% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 55% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 205 90% 55%;
+    --primary-foreground: 222 60% 6%;
+    --secondary: 222 40% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 30% 16%;
+    --muted-foreground: 215 25% 68%;
+    --accent: 190 95% 55%;
+    --accent-foreground: 222 60% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 40% 20%;
+    --input: 217 40% 18%;
+    --ring: 190 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-sora), system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-sans { font-family: var(--font-inter), system-ui, sans-serif; }
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-strong {
+    background: rgba(10, 18, 40, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .text-glow {
+    text-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+  }
+  .gradient-text {
+    background: linear-gradient(100deg, #e2f2ff 0%, #38bdf8 45%, #22d3ee 75%, #818cf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-fade {
+    background-image:
+      linear-gradient(rgba(56,189,248,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,0.06) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+  }
+  .noise-hide::-webkit-scrollbar { display: none; }
+}
+
+/* Custom cursor */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+.cursor-dot {
+  width: 7px; height: 7px;
+  background: #7dd3fc;
+}
+.cursor-ring {
+  width: 34px; height: 34px;
+  border: 1.5px solid rgba(125, 211, 252, 0.8);
+  transition: width .2s ease, height .2s ease, background .2s ease, border-color .2s ease;
+}
+.cursor-ring.hovering {
+  width: 64px; height: 64px;
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(34, 211, 238, 0.9);
+}
+
+::selection { background: rgba(56,189,248,0.3); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
