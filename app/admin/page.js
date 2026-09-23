@@ -39,7 +39,7 @@ export default function AdminPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="dark min-h-screen bg-background text-foreground flex">
       <aside className="hidden md:flex w-64 flex-col border-r border-border/60 p-4 sticky top-0 h-screen">
         <div className="flex items-center gap-2 px-2 py-3 mb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground font-display font-bold">S</span>
@@ -88,7 +88,7 @@ function Login({ onLogin }) {
     finally { setBusy(false) }
   }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden px-4">
+    <div className="dark min-h-screen flex items-center justify-center bg-background text-foreground relative overflow-hidden px-4">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_40%,rgba(56,189,248,0.18),transparent_70%)]" />
       <div className="absolute inset-0 grid-fade opacity-40" />
       <motion.form initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} onSubmit={submit} className="relative glass-strong rounded-3xl p-8 w-full max-w-md">

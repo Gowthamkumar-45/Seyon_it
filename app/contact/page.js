@@ -99,7 +99,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <style jsx global>{`.inp{width:100%;border-radius:0.9rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:0.75rem 1rem;font-size:0.9rem;outline:none}.inp:focus{border-color:hsl(var(--accent))}`}</style>
+      <style jsx global>{`.inp{width:100%;border-radius:0.75rem;background:hsl(var(--surface));border:1px solid hsl(var(--input));padding:0.75rem 1rem;font-size:0.9rem;outline:none;color:inherit}.inp:focus{border-color:hsl(var(--primary))}`}</style>
     </SiteShell>
   )
 }

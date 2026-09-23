@@ -23,16 +23,15 @@ function Counter({ value, suffix }) {
 
 export default function StatsBand({ stats = [] }) {
   return (
-    <section className="relative py-16">
+    <section className="relative py-6">
       <div className="container">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 rounded-2xl glass overflow-hidden divide-x divide-y md:divide-y-0 divide-border">
           {stats.map((s, i) => (
-            <div key={i} className="glass rounded-3xl p-7 text-center relative overflow-hidden group">
-              <div className="absolute -inset-px rounded-3xl bg-gradient-to-b from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative font-display text-4xl md:text-5xl font-bold gradient-text">
+            <div key={i} className="p-8 text-center">
+              <div className="font-display text-4xl md:text-5xl font-extrabold text-primary">
                 <Counter value={s.value} suffix={s.suffix || ''} />
               </div>
-              <div className="relative mt-2 text-sm text-muted-foreground">{s.label}</div>
+              <div className="mt-2 text-sm font-medium text-muted-foreground">{s.label}</div>
             </div>
           ))}
         </div>
