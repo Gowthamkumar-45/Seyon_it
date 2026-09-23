@@ -17,6 +17,7 @@ export default function CustomCursor() {
     const over = (e) => {
       const t = e.target.closest('a, button, [data-cursor]')
       if (ring.current) ring.current.classList.toggle('hovering', !!t)
+      if (dot.current) dot.current.classList.toggle('hovering', !!t)
     }
     const loop = () => {
       rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18

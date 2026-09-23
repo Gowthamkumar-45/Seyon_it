@@ -1,43 +1,19 @@
 'use client'
-import { useRef, useState, useEffect } from 'react'
-import dynamic from 'next/dynamic'
+import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import { WordReveal } from './Reveal'
 import MagneticButton from './MagneticButton'
-import { useDevice } from '@/lib/useDevice'
-
-const HeroScene = dynamic(() => import('./HeroScene'), { ssr: false, loading: () => null })
 
 export default function Hero() {
   const ref = useRef(null)
-  const device = useDevice()
-  const [show3d, setShow3d] = useState(false)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const sceneOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 1.6])
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 120])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
-  useEffect(() => {
-    if (!device.ready) return
-    if (device.reduceMotion) return
-    const t = setTimeout(() => setShow3d(true), 150)
-    return () => clearTimeout(t)
-  }, [device.ready, device.reduceMotion])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0])
 
   return (
     <section ref={ref} className="relative h-screen w-full overflow-hidden">
-      {/* gradient fallback / base */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_40%,rgba(30,64,175,0.5),transparent_70%)] bg-background" />
-      <motion.div style={{ opacity: sceneOpacity, scale: sceneScale }} className="absolute inset-0">
-        {show3d ? <HeroScene lowPower={device.lowPower} /> : (
-          <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,#05070f,#0b1638,#0e2a4d,#06121f,#05070f)] animate-pulse" />
-        )}
-      </motion.div>
-      <div className="absolute inset-0 grid-fade opacity-60 pointer-events-none" />
-
       <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs sm:text-sm text-muted-foreground">
           <span className="h-2 w-2 rounded-full bg-accent animate-pulse" /> Coimbatore, Tamil Nadu · Digital platform studio
